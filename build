@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+apk add --no-cache --virtual build-dependencies build-base git autoconf automake
+
+SRC_DIR=/tmp/rinetd
+
+git clone https://github.com/samhocevar/rinetd.git $SRC_DIR
+cd $SRC_DIR
+./bootstrap
+./configure
+make
+strip rinetd
+install -m700 rinetd /usr/sbin
+
+cd /
+rm -rf $SRC_DIR
+apk del --purge build-dependencies
