@@ -3,6 +3,7 @@
 apk add --no-cache --virtual build-dependencies build-base git autoconf automake
 
 SRC_DIR=/tmp/rinetd
+ETC_DIR=/etc/rinetd
 
 git clone https://github.com/samhocevar/rinetd.git $SRC_DIR
 cd $SRC_DIR
@@ -11,6 +12,8 @@ cd $SRC_DIR
 make
 strip rinetd
 install -m700 rinetd /usr/sbin
+mkdir $ETC_DIR
+install -m644 rinetd.conf $ETC_DIR
 
 cd /
 rm -rf $SRC_DIR
