@@ -18,3 +18,5 @@ install -m644 rinetd.conf $ETC_DIR
 cd /
 rm -rf $SRC_DIR
 apk del --purge build-dependencies
+
+apk add --no-cache tzdata
